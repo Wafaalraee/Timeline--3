@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="public/style.css">
+       <title>comment</title>
+    </head>
+        <body>
+            <h1>Timeline</h1>
+    <div class="link-container">
+        <nav class="links">         
+        </nav>
+    </div>
+    <div class="container">
+    <section id="sec">
+        <form action="/post" method="post">
+            <input type="text" name="name" id="user-name"  placeholder="name" required><br>
+            <textarea name="message" id="post" placeholder="message" required></textarea>
+            <button>Post a message</button>
+        </form>
+    </section><br>
+    <div class="user-list">
+        <% for (let i=0; i<data.length; i++) { %>
+            <div class="user-list-container"> 
+                <div class="text">
+                    <p class="name-date"><span><%= data[i].name %></span></p>
+                    <p class="user-post"><%= data[i].message %></p> 
+                </div>
+                <br>                             
+                <div class="btns">                 
+                    <form action="/delete-user/<%= data[i]._id %>" method="post">
+                        <button>Delete</button>
+                    </form>
+                </div>
+                <p class="time"><%= data[i].created_at %></p>                
+            </div>
+        <% } %>
+    </div>
+    </body>
+    </html>
+  
+  
